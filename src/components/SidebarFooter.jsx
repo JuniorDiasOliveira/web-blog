@@ -47,31 +47,72 @@ const Envelope = styled.div`
   cursor: pointer;
 `;
 
-const copyEmail = (setTextPanel) => {
-  const email = 'juniordiasoli@gmail.com';
-  navigator.clipboard.writeText(email);
-  setTextPanel('Email copied to clipboard');
+const eventTexts = {
+  cv: 'My CV :) ',
+  copyEmail: 'Email copied to clipboard',
+  email: 'Click to copy the email',
+  github: 'Github',
+  linkedin: 'LinkedIn',
 };
 
 const SidebarFooter = () => {
   const { setTextPanel } = React.useContext(PanelContext);
+
+  const onMouseEnter = (text) => {
+    if (text) {
+      setTextPanel(eventTexts[text]);
+      return;
+    }
+    setTextPanel('');
+  };
+
+  const copyEmail = () => {
+    const email = 'juniordiasoli@gmail.com';
+    navigator.clipboard.writeText(email);
+    setTextPanel(eventTexts.copyEmail);
+    setTimeout(() => {
+      setTextPanel('');
+    }, 1000);
+  };
+
   return (
     <Container>
-      <p>Contact ways</p>
+      <p>Find more about me:</p>
       <Links>
-        <a href="https://github.com/wangonya" target="_blank" rel="noreferrer">
+        <a
+          href="https://github.com/wangonya"
+          target="_blank"
+          rel="noreferrer"
+          onMouseEnter={() => onMouseEnter('github')}
+          onMouseLeave={() => onMouseEnter('')}
+        >
           <i className="fab fa-github" />
         </a>
         <a
           href="https://linkedin.com/in/wangonya"
           target="_blank"
           rel="noreferrer"
+          onMouseEnter={() => onMouseEnter('linkedin')}
+          onMouseLeave={() => onMouseEnter('')}
         >
           <i className="fab fa-linkedin" />
         </a>
-        <Envelope onClick={() => copyEmail(setTextPanel)}>
+        <Envelope
+          onClick={() => copyEmail()}
+          onMouseEnter={() => onMouseEnter('email')}
+          onMouseLeave={() => onMouseEnter('')}
+        >
           <i className="fas fa-envelope" />
         </Envelope>
+        <a
+          href="https://linkedin.com/in/wangonya"
+          target="_blank"
+          rel="noreferrer"
+          onMouseEnter={() => onMouseEnter('cv')}
+          onMouseLeave={() => onMouseEnter('')}
+        >
+          <i className="fas fa-file-alt" />
+        </a>
       </Links>
       <SmallSeparator src={separator} />
       <Copyright>2021 © Junior Oliveira</Copyright>

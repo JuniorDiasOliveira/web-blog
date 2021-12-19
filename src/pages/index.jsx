@@ -1,14 +1,22 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import styled from 'styled-components';
 import { PanelProvider } from '../context/PanelContext';
 import Sidebar from '../components/Sidebar';
+import ContentSide from '../components/ContentSide';
 import '../styles/reset.css';
 import '../styles/normalize.css';
 import '../styles/base.css';
 
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: 240px 90%;
+  grid-gap: 10px;
+`;
+
 const Index = () => (
   <>
-    <Helmet>
+    <Helmet htmlAttributes={{ 'data-scroll': 0 }}>
       <meta
         name="viewport"
         content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
@@ -24,8 +32,12 @@ const Index = () => (
         crossOrigin="anonymous"
       />
     </Helmet>
+
     <PanelProvider>
-      <Sidebar />
+      <Container>
+        <Sidebar />
+        <ContentSide />
+      </Container>
     </PanelProvider>
   </>
 );

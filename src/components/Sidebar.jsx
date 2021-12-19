@@ -5,16 +5,6 @@ import SidebarFooter from './SidebarFooter';
 import separator from '../images/separator.jpg';
 import InteractivePanel from './InteractivePanel';
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid #eaeaea;
-  width: 240px;
-  height: 100vh;
-`;
-
 const Me = styled.img`
   width: 150px;
   height: 150px;
@@ -28,13 +18,13 @@ const Name = styled.h1`
 `;
 
 const Separator = styled.img`
-  width: 100%;
+  width: 90%;
   margin: 10px 0;
 `;
 
 const Description = styled.p`
   line-height: 1.5;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   text-align: center;
   padding: 0 5px 0 5px;
 `;
@@ -47,19 +37,40 @@ const AboutMe = styled.div`
   margin-top: 20px;
 `;
 
+const FixedContent = styled.div`
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  border: 1px solid #eaeaea;
+  background-color: white;
+  width: 240px;
+`;
+
+const Container = styled.div`
+  width: 240px;
+  grid-column: 1/1;
+  background-color: white;
+  z-index: 1;
+`;
+
 const Sidebar = () => (
   <Container>
-    <AboutMe>
-      <Me src={me} />
-      <Name>Junior Oliveira</Name>
-      <Separator src={separator} />
-      <Description>
-        A front-end developer focused on best practices and always trying to
-        learn something new
-      </Description>
-    </AboutMe>
-    <InteractivePanel />
-    <SidebarFooter />
+    <FixedContent>
+      <AboutMe>
+        <Me src={me} />
+        <Name>Junior Oliveira</Name>
+        <Separator src={separator} />
+        <Description>
+          A front-end developer focused on best practices and always trying to
+          learn something new
+        </Description>
+      </AboutMe>
+      <InteractivePanel />
+      <SidebarFooter />
+    </FixedContent>
   </Container>
 );
 export default Sidebar;
