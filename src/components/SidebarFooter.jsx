@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import { PanelContext } from '../context/PanelContext';
-import separator from '../images/separator.jpg';
+import React from "react";
+import styled from "styled-components";
+import { PanelContext } from "../context/PanelContext";
+import separator from "../images/separator.jpg";
 
 const Container = styled.div`
   font-size: 0.9rem;
@@ -48,11 +48,11 @@ const Envelope = styled.div`
 `;
 
 const eventTexts = {
-  cv: 'My CV :) ',
-  copyEmail: 'Email copied to clipboard',
-  email: 'Click to copy the email',
-  github: 'Github',
-  linkedin: 'LinkedIn',
+  cv: "My CV :) ",
+  copyEmail: "Email copied to clipboard",
+  email: "Click to copy the email",
+  github: "Github",
+  linkedin: "LinkedIn",
 };
 
 const SidebarFooter = () => {
@@ -63,15 +63,15 @@ const SidebarFooter = () => {
       setTextPanel(eventTexts[text]);
       return;
     }
-    setTextPanel('');
+    setTextPanel("");
   };
 
   const copyEmail = () => {
-    const email = 'juniordiasoli@gmail.com';
+    const email = "juniordiasoli@gmail.com";
     navigator.clipboard.writeText(email);
     setTextPanel(eventTexts.copyEmail);
     setTimeout(() => {
-      setTextPanel('');
+      setTextPanel("");
     }, 1000);
   };
 
@@ -83,8 +83,8 @@ const SidebarFooter = () => {
           href="https://github.com/wangonya"
           target="_blank"
           rel="noreferrer"
-          onMouseEnter={() => onMouseEnter('github')}
-          onMouseLeave={() => onMouseEnter('')}
+          onMouseEnter={() => onMouseEnter("github")}
+          onMouseLeave={() => onMouseEnter("")}
         >
           <i className="fab fa-github" />
         </a>
@@ -92,15 +92,15 @@ const SidebarFooter = () => {
           href="https://linkedin.com/in/wangonya"
           target="_blank"
           rel="noreferrer"
-          onMouseEnter={() => onMouseEnter('linkedin')}
-          onMouseLeave={() => onMouseEnter('')}
+          onMouseEnter={() => onMouseEnter("linkedin")}
+          onMouseLeave={() => onMouseEnter("")}
         >
           <i className="fab fa-linkedin" />
         </a>
         <Envelope
           onClick={() => copyEmail()}
-          onMouseEnter={() => onMouseEnter('email')}
-          onMouseLeave={() => onMouseEnter('')}
+          onMouseEnter={() => onMouseEnter("email")}
+          onMouseLeave={() => onMouseEnter("")}
         >
           <i className="fas fa-envelope" />
         </Envelope>
@@ -108,14 +108,14 @@ const SidebarFooter = () => {
           href="https://linkedin.com/in/wangonya"
           target="_blank"
           rel="noreferrer"
-          onMouseEnter={() => onMouseEnter('cv')}
-          onMouseLeave={() => onMouseEnter('')}
+          onMouseEnter={() => onMouseEnter("cv")}
+          onMouseLeave={() => onMouseEnter("")}
         >
           <i className="fas fa-file-alt" />
         </a>
       </Links>
       <SmallSeparator src={separator} />
-      <Copyright>2021 © Junior Oliveira</Copyright>
+      <Copyright>2023 © Junior Oliveira</Copyright>
     </Container>
   );
 };
